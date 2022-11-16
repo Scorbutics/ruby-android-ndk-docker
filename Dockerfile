@@ -28,14 +28,15 @@ RUN apk update && \
     autoconf \
 # ncurses on host is required for cross-compiling ncurses (tic executable must be on the host when cross-compiling)
     ncurses \
-    zip
+    zip \
+    automake \
+    g++ \
+    gettext \
+# some dependencies might need patches
+    patch
 
 # add NDK to PATH
 ENV PATH $PATH:$ANDROID_NDK_HOME
 ENV ANDROID_NDK $ANDROID_NDK_HOME
-
-# COPY ./entrypoint.sh /make.sh
-# RUN chmod +x /make.sh
-# ENTRYPOINT [ "/make.sh" ]
 
 WORKDIR /opt/current
